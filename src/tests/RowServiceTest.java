@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static tests.TestConstants.*;
 import static org.junit.jupiter.api.Assertions.*;
+import static tests.TestConstants.TEST_FIELD_HARD;
 
 public class RowServiceTest {
 
@@ -28,7 +28,7 @@ public class RowServiceTest {
     private RowService rowService = new RowService();
 
         @Test
-        public void test_getPossibleNumbers(){
+        public void test_getPossibleNumbers_pos30(){
             Cell testCell = TEST_FIELD_HARD.getCell(30);
             assertEquals(9, testCell.getPossibleValues().size());
             assertEquals(0, testCell.getValue());
@@ -47,4 +47,25 @@ public class RowServiceTest {
                 assertTrue(testCell.getPossibleValues().contains(i));
             }
         }
+
+    @Test
+    public void test_getPossibleNumbers_pos1(){
+        Cell testCell = TEST_FIELD_HARD.getCell(1);
+        assertEquals(8, testCell.getPossibleValues().size());
+        assertEquals(3, testCell.getValue());
+        List<Integer> outputList = rowService.getPossibleNumbers(testCell);
+
+        assertEquals(7,testCell.getPossibleValues().size());
+        assertTrue(outputList==testCell.getPossibleValues());
+
+        for (Integer i = 1; i < 10; i++) {
+            if (i == 3 || i == 6) {
+                assertFalse(outputList.contains(i));
+                assertFalse(testCell.getPossibleValues().contains(i));
+                continue;
+            }
+            assertTrue(outputList.contains(i));
+            assertTrue(testCell.getPossibleValues().contains(i));
+        }
+    }
 }
