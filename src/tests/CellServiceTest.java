@@ -4,8 +4,9 @@ import com.javaFish.structure.Cell;
 import com.javaFish.util.CellService;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static tests.TestConstants.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static tests.TestConstants.TEST_FIELD_HARD;
 
 public class CellServiceTest {
 

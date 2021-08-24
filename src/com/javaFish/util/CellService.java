@@ -41,6 +41,16 @@ public class CellService implements OneToNine {
         return getRow(cell.getPosition());
     }
 
+    /**
+     * @param cell               cell where the possible values have to be removed
+     * @param valuesOfOtherCells values from other cells either from a row/column or a cell
+     * @return the corrected possible values for the transmitted cell
+     */
+    @Override
+    public List<Integer> removePossibleValuesFromCell(Cell cell, List<Integer> valuesOfOtherCells) {
+        return null;
+    }
+
     public int getRow (int position){
         return position/NINE;
     }

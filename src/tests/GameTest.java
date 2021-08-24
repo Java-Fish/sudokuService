@@ -5,8 +5,9 @@ import com.javaFish.util.Game;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static tests.TestConstants.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static tests.TestConstants.INPUT_HARD_ZERO_FILLED;
+import static tests.TestConstants.SOLUTION_HARD;
 
 public class GameTest {
 

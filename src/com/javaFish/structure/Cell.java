@@ -3,7 +3,8 @@ package com.javaFish.structure;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.javaFish.util.Constants.*;
+import static com.javaFish.util.Constants.NINE;
+import static com.javaFish.util.Constants.POSSIBLE_CELL_VALUES;
 
 public class Cell {
 
@@ -72,7 +73,7 @@ public class Cell {
         }
 
         List<Integer> newPossibleValues = new ArrayList<>();
-        for (Integer oldPossibleValue : POSSIBLE_CELL_VALUES){
+        for (Integer oldPossibleValue : possibleValues){
             if (oldPossibleValue != valueToRemove){
                 newPossibleValues.add(oldPossibleValue);
             }

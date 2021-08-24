@@ -1,9 +1,9 @@
 package com.javaFish.structure;
 
 import com.javaFish.util.CellService;
-import com.javaFish.util.exceptions.SudokuCreationException;
 
-import static com.javaFish.util.Constants.*;
+import static com.javaFish.util.Constants.MAX_NUMBER_OF_CELLS_IN_COLUMN;
+import static com.javaFish.util.Constants.MAX_NUMBER_OF_CELLS_IN_ROW;
 
 public class Field {
 

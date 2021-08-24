@@ -1,7 +1,6 @@
 package com.javaFish.util;
 
 import com.javaFish.structure.Field;
-import com.javaFish.util.exceptions.SudokuCreationException;
 
 import java.util.Random;
 
