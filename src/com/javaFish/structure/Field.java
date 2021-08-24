@@ -1,14 +1,13 @@
 package com.javaFish.structure;
 
 import com.javaFish.util.CellService;
-import com.javaFish.util.Game;
 import com.javaFish.util.exceptions.SudokuCreationException;
 
-import java.util.ArrayList;
-import java.util.List;
 import static com.javaFish.util.Constants.*;
 
 public class Field {
+
+    private static CellService cellService = new CellService();
 
     /**
      * Squares are numerated from 0-8 from top left to down right
@@ -21,7 +20,7 @@ public class Field {
      */
     private Cell[][] cells = new Cell[MAX_NUMBER_OF_CELLS_IN_COLUMN][MAX_NUMBER_OF_CELLS_IN_ROW];
 
-    public Field (Integer[] cellValues) throws SudokuCreationException {
+    public Field (Integer[] cellValues) {
 
         fillField(cellValues);
         
@@ -31,13 +30,19 @@ public class Field {
 
         for (int row = 0; row < MAX_NUMBER_OF_CELLS_IN_COLUMN; row++){
             for (int column = 0; column < MAX_NUMBER_OF_CELLS_IN_ROW; column++){
-                int position = CellService.calcualtePosition(column,row);
-                cells[column][row] = new Cell(position, cellValues[position]);
+                int position = CellService.calculatePosition(column,row);
+                cells[column][row] = new Cell(position, cellValues[position],this);
             }
         }
     }
 
     public Cell getCell(int column, int row){
+        return cells[column][row];
+    }
+
+    public Cell getCell(int position){
+        int column = cellService.getColumn(position);
+        int row = cellService.getRow(position);
         return cells[column][row];
     }
 }

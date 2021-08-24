@@ -1,7 +1,6 @@
 package com.javaFish.util;
 
 import com.javaFish.structure.Cell;
-import com.javaFish.structure.NumberContainer;
 
 import java.util.List;
 
@@ -10,17 +9,18 @@ public interface OneToNine {
     /**
      *
      * @return List of possible int numbers
+     * @param cell
      */
-    public List<Integer> getPossibleNumbers(NumberContainer container);
+    public List<Integer> getPossibleNumbers(Cell cell);
 
     /**
      *
-     * @param container to check
+     * @param cell to check
      * @return true if number is possible, no check if it is the right number
      */
-    public boolean isNumberPossible(NumberContainer container);
+    public boolean isNumberPossible(Cell cell);
 
-    public int getColumn (NumberContainer center);
+    public int getColumn (Cell cell);
 
-    public int getRow (NumberContainer center);
+    public int getRow (Cell cell);
 }

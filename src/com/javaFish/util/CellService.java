@@ -1,6 +1,6 @@
 package com.javaFish.util;
 
-import com.javaFish.structure.NumberContainer;
+import com.javaFish.structure.Cell;
 
 import java.util.List;
 
@@ -9,32 +9,43 @@ import static com.javaFish.util.Constants.NINE;
 public class CellService implements OneToNine {
     /**
      * @return List of possible int numbers
+     * @param cell
      */
     @Override
-    public List<Integer> getPossibleNumbers(NumberContainer container) {
-        return container.getPossibleValues();
+    public List<Integer> getPossibleNumbers(Cell cell) {
+        return cell.getPossibleValues();
     }
 
     /**
-     * @param container to check
+     * @param cell to check
      * @return true if number is possible, no check if it is the right number
      */
     @Override
-    public boolean isNumberPossible(NumberContainer container) {
+    public boolean isNumberPossible(Cell cell) {
         return false;
     }
 
     @Override
-    public int getColumn(NumberContainer center) {
-        return center.getPosition()%NINE;
+    public int getColumn(Cell cell) {
+
+        return getColumn(cell.getPosition());
+    }
+
+    public int getColumn (int position){
+        return position%NINE;
     }
 
     @Override
-    public int getRow(NumberContainer center) {
-        return center.getPosition()/NINE;
+    public int getRow(Cell cell) {
+
+        return getRow(cell.getPosition());
     }
 
-    public static int calcualtePosition(int column, int row){
+    public int getRow (int position){
+        return position/NINE;
+    }
+
+    public static int calculatePosition(int column, int row){
         return (row*NINE)+column;
     }
 

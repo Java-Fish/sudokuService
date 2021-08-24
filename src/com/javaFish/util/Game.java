@@ -19,12 +19,8 @@ public class Game {
         if (!cellsValid(cells)) {
             return null;
         }
-        try {
-            return new Field(cells);
-        } catch (SudokuCreationException e) {
-            e.printStackTrace();
-        }
-        return null;
+
+        return new Field(cells);
     }
     
     public static Field randomField(int difficulty){
@@ -50,6 +46,9 @@ public class Game {
             return false;
         }
         for (Integer cell: cells){
+            //it is possible to set 0 or NULL as emtpy cell
+            if (cell == null || cell == 0) continue;
+
             if (cell < MIN_CELL_VALUE || cell > MAX_CELL_VALUE){
                 return false;
             }

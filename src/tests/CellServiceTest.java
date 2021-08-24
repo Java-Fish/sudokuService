@@ -5,6 +5,7 @@ import com.javaFish.util.CellService;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static tests.TestConstants.*;
 
 public class CellServiceTest {
 
@@ -22,44 +23,45 @@ public class CellServiceTest {
      * 72	73	74	75	76	77	78	79	80
      */
 
-    private static final Cell CELL_0 = new Cell(0,1);
-    private static final Cell CELL_28 = new Cell(28, 4);
-    private static final Cell CELL_61 = new Cell(61, 0);
+    private static final Cell CELL_0 = TEST_FIELD_HARD.getCell(0);
+    private static final Cell CELL_39 = TEST_FIELD_HARD.getCell(39);
+    private static final Cell CELL_66 = TEST_FIELD_HARD.getCell(66);;
     private CellService service = new CellService();
 
     @Test
     public void test_getColumn(){
         assertEquals(0,service.getColumn(CELL_0));
-        assertEquals(1,service.getColumn(CELL_28));
-        assertEquals(7,service.getColumn(CELL_61));
+        assertEquals(3,service.getColumn(CELL_39));
+        assertEquals(3,service.getColumn(CELL_66));
     }
 
     @Test
     public void test_getRow(){
         assertEquals(0,service.getRow(CELL_0));
-        assertEquals(3,service.getRow(CELL_28));
-        assertEquals(6,service.getRow(CELL_61));
+        assertEquals(4,service.getRow(CELL_39));
+        assertEquals(7,service.getRow(CELL_66));
     }
 
     @Test
     public void test_calculatePosition(){
-        assertEquals(0,CellService.calcualtePosition(0,0));
-        assertEquals(28,CellService.calcualtePosition(1,3));
-        assertEquals(61,CellService.calcualtePosition(7,6));
+        assertEquals(0,CellService.calculatePosition(0,0));
+        assertEquals(28,CellService.calculatePosition(1,3));
+        assertEquals(61,CellService.calculatePosition(7,6));
     }
 
     @Test
     public void test_getPossibleValues(){
-        // value 1
-        assertEquals(8,service.getPossibleNumbers(CELL_0).size());
-        assertFalse(service.getPossibleNumbers(CELL_0).contains(1));
-        for (int testValue = 2; testValue < 10; testValue++){
+        // value 0
+        assertEquals(9,service.getPossibleNumbers(CELL_0).size());
+        assertTrue(service.getPossibleNumbers(CELL_0).contains(1));
+        for (int testValue = 1; testValue < 10; testValue++){
             assertTrue(service.getPossibleNumbers(CELL_0).contains(testValue));
         }
-        // no value, value 0
-        assertEquals(9,service.getPossibleNumbers(CELL_61).size());
+        // value 8
+        assertEquals(8,service.getPossibleNumbers(CELL_39).size());
         for (int testValue = 1; testValue < 10; testValue++){
-            assertTrue(service.getPossibleNumbers(CELL_61).contains(testValue));
+            if (8 == testValue) continue;
+            assertTrue(service.getPossibleNumbers(CELL_39).contains(testValue));
         }
     }
 }
